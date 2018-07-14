@@ -1,0 +1,906 @@
+<aiml version="1.0.1" encoding="UTF-8">
+<!-- paraphrasing.aiml -->
+<!-- Data taken from Eliza -->
+
+<category>
+<pattern>*</pattern>
+<template>
+<random>
+<li>I am not sure I understand you fully.</li>
+<li>Go on user_name. Let it all out.</li>
+<li>Please go on.</li>
+<li>What does that suggest to you ?</li>
+<li>Do you feel strongly about discussing such things ?</li>
+<li>That's interesting. Please continue.</li>
+<li>Tell me more about that.</li>
+<li>Does talking about this bother you?</li>
+</random>
+<think><set name="intent">undefined</set></think>
+</template>
+</category>
+
+<category>
+<pattern>* PERHAPS *</pattern>
+<template><srai>PERHAPS <star index="2"/></srai>
+</template>
+</category>
+
+<category>
+<pattern>PERHAPS *</pattern>
+<template>
+<random>
+<li>You don't seem quite certain.</li>
+<li>Why the uncertain tone?</li>
+<li>You are not sure?</li>
+<li>Dont you know?</li>
+<li>How likely, would you estimate ?</li>
+</random>
+<think><set name="intent">user_say_perhaps</set></think>
+</template>
+</category>
+
+<category>
+<pattern>* AM I *</pattern>
+<template><srai>AM I <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>AM I *</pattern>
+<template>
+<think><set name="am_i"><star/></set>
+<set name="intent">user_say_am_i</set></think>
+<random>
+<li>Do you believe you are <get name="am_i"/>?</li>
+<li>Would you want to be <get name="am_i"/>?</li>
+<li>Do you wish I would tell you you are <get name="am_i"/>?</li>
+<li>What would it mean if you were <get name="am_i"/>?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* I WANT *</pattern>
+<template><srai>USER DESIRE</srai>
+<think><set name="user_desire"><star index="2"/></set></think>
+</template>
+</category>
+
+<category>
+<pattern>I WANT *</pattern>
+<template><srai>USER DESIRE</srai>
+<think><set name="user_desire"><star/></set></think>
+</template>
+</category>
+
+<category>
+<pattern>* I NEED *</pattern>
+<template><srai>USER DESIRE</srai>
+<think><set name="user_desire"><star index="2"/></set></think>
+</template>
+</category>
+
+<category>
+<pattern>I NEED *</pattern>
+<template><srai>USER DESIRE</srai>
+<think><set name="user_desire"><star/></set></think>
+</template>
+</category>
+
+<category>
+<pattern>USER DESIRE</pattern>
+<template>
+<random>
+<li>What would it mean to you if you got <get name="user_desire"/>?</li>
+<li>Why do you want <get name="user_desire"/>?</li>
+<li>Suppose you got <get name="user_desire"/> soon.</li>
+<li>What if you never got <get name="user_desire"/>?</li>
+<li>What would getting <get name="user_desire"/> mean to you ?</li>
+<li>What does wanting <get name="user_desire"/> have to do with this discussion?</li>
+</random>
+<think><set name="intent">user_desire</set></think>
+</template>
+</category>
+
+<category>
+<pattern>* ARE YOU *</pattern>
+<template><srai>ARE YOU <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>ARE YOU *</pattern>
+<template>
+<think><set name="are_you"><star/></set>
+<set name="intent">user_say_are_you</set></think>
+<random>
+<li>Why are you interested in whether I'm <get name="are_you"/> or not ?</li>
+<li>Would you prefer if I weren't <get name="are_you"/>?</li>
+<li>Perhaps I am <get name="are_you"/> in your fantasies.</li>
+<li>Do you sometimes think I am <get name="are_you"/>?</li>
+<li>Would it matter to you?</li>
+<li>What if I were <get name="are_you"/>?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* ARE *</pattern>
+<template><srai>ARE <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>ARE *</pattern>
+<template>
+<think><set name="are"><star/></set>
+<set name="intent">user_say_are</set></think>
+<random>
+<li>Did you think they might not be <get name="are"/>?</li>
+<li>Would you like it if they were not <get name="are"/>?</li>
+<li>What if they were not <get name="are"/>?</li>
+<li>Are they always <get name="are"/>?</li>
+<li>Possibly they are <get name="are"/>.</li>
+<li>Are you positive they are <get name="are"/>?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* YOUR *</pattern>
+<template><srai>YOUR <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>YOUR *</pattern>
+<template>
+<think><set name="your"><star/></set>
+<set name="intent">user_say_your</set></think>
+<random>
+<li>Why are you concerned over my <get name="your"/>?</li>
+<li>What about your own <get name="your"/>?</li>
+<li>Are you worried about someone else's <get name="your"/>?</li>
+<li>Really, my <get name="your"/>?</li>
+<li>What makes you think of my <get name="your"/>?</li>
+<li>Are you positive they are <get name="your"/>?</li>
+<li>Do you want my <get name="your"/>?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* I FEEL I *</pattern>
+<template><srai>USER BELIEF</srai>
+<think><set name="user_belief"><star index="2"/></set></think>
+</template>
+</category>
+
+<category>
+<pattern>I FEEL I *</pattern>
+<template><srai>USER BELIEF</srai>
+<think><set name="user_belief"><star/></set></think>
+</template>
+</category>
+
+<category>
+<pattern>* I THINK I *</pattern>
+<template><srai>USER BELIEF</srai>
+<think><set name="user_belief"><star index="2"/></set></think>
+</template>
+</category>
+
+<category>
+<pattern>I THINK I *</pattern>
+<template><srai>USER BELIEF</srai>
+<think><set name="user_belief"><star/></set></think>
+</template>
+</category>
+
+<category>
+<pattern>* I BELIEVE I *</pattern>
+<template><srai>USER BELIEF</srai>
+<think><set name="user_belief"><star index="2"/></set></think>
+</template>
+</category>
+
+<category>
+<pattern>I BELIEVE I *</pattern>
+<template><srai>USER BELIEF</srai>
+<think><set name="user_belief"><star/></set></think>
+</template>
+</category>
+
+<category>
+<pattern>* I WISH I *</pattern>
+<template><srai>USER BELIEF</srai>
+<think><set name="user_belief"><star index="2"/></set></think>
+</template>
+</category>
+
+<category>
+<pattern>I WISH I *</pattern>
+<template><srai>USER BELIEF</srai>
+<think><set name="user_belief"><star/></set></think>
+</template>
+</category>
+
+<category>
+<pattern>USER BELIEF</pattern>
+<template>
+<random>
+<li>Do you really think so?</li>
+<li>But you are not sure you <get name="user_belief"/>.</li>
+<li>Do you really doubt you <get name="user_belief"/>?</li>
+</random>
+<think><set name="intent">user_belief</set></think>
+</template>
+</category>
+
+<category>
+<pattern>* I AM *</pattern>
+<template><srai>I AM <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>I AM *</pattern>
+<template>
+<think><set name="user_say_i_am"><star/></set>
+<set name="intent">user_say_i_am</set></think>
+<random>
+<li>Is it because you are <get name="user_say_i_am"/> that you came to me?</li>
+<li>How long have you been <get name="user_say_i_am"/>?</li>
+<li>Do you believe it is normal to be <get name="user_say_i_am"/>?</li>
+<li>Do you enjoy being <get name="user_say_i_am"/>?</li>
+<li>Do you know anyone else who is <get name="user_say_i_am"/>?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* I CAN NOT *</pattern>
+<template><srai>I CAN NOT <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>I CAN NOT *</pattern>
+<template>
+<think><set name="user_say_i_cant"><star/></set>
+<set name="intent">user_say_i_cant</set></think>
+<random>
+<li>How do you know that you can not <get name="user_say_i_cant"/>?</li>
+<li>Have you tried?</li>
+<li>Perhaps you could <get name="user_say_i_cant"/> now.</li>
+<li>Do you really want to be able to <get name="user_say_i_cant"/>?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* I DO NOT *</pattern>
+<template><srai>I DO NOT <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>I DO NOT *</pattern>
+<template>
+<think><set name="user_say_i_dont"><star/></set>
+<set name="intent">user_say_i_dont</set></think>
+<random>
+<li>Do not you really <get name="user_say_i_dont"/>?</li>
+<li>Why do not you <get name="user_say_i_dont"/>?</li>
+<li>Do you wish to be able to <get name="user_say_i_dont"/>?</li>
+<li>Does that trouble you ?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* I FEEL *</pattern>
+<template><srai>I FEEL <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>I FEEL *</pattern>
+<template>
+<think><set name="user_say_i_feel"><star/></set>
+<set name="intent">user_say_i_feel</set></think>
+<random>
+<li>Tell me more about such feelings.</li>
+<li>Do you often feel <get name="user_say_i_feel"/>?</li>
+<li>Do you enjoy feeling <get name="user_say_i_feel"/>?</li>
+<li>Of what does feeling <get name="user_say_i_feel"/> remind you?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* CAN YOU *</pattern>
+<template><srai>CAN YOU <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>CAN YOU *</pattern>
+<template>
+<think><set name="can_bot"><star/></set>
+<set name="intent">can_bot</set></think>
+<random>
+<li>You believe I can <get name="can_bot"/> don't you?</li>
+<li>You want me to be able to <get name="can_bot"/>.</li>
+<li>Perhaps you would like to be able to <get name="can_bot"/> yourself.</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* CAN I *</pattern>
+<template><srai>CAN I <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>CAN I *</pattern>
+<template>
+<think><set name="can_user"><star/></set>
+<set name="intent">can_user</set></think>
+<random>
+<li>Whether or not you can <get name="can_user"/> depends on you more than on me.</li>
+<li>Do you want to be able to <get name="can_user"/>?</li>
+<li>Perhaps you don't want to <get name="can_user"/>.</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* BECAUSE *</pattern>
+<template><srai>BECAUSE <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>BECAUSE *</pattern>
+<template>
+<random>
+<li>Is that the real reason?</li>
+<li>Don't any other reasons come to mind?</li>
+<li>Does that reason seem to explain anything else?</li>
+<li>What other reasons might there be?</li>
+</random>
+<think><set name="intent">user_say_because</set></think>
+</template>
+</category>
+
+<category>
+<pattern>WHY *</pattern>
+<template><srai>WHAT</srai></template>
+</category>
+
+<category>
+<pattern>HOW *</pattern>
+<template><srai>WHAT</srai></template>
+</category>
+
+<category>
+<pattern>WHERE *</pattern>
+<template><srai>WHAT</srai></template>
+</category>
+
+<category>
+<pattern>WHEN *</pattern>
+<template><srai>WHAT</srai></template>
+</category>
+
+<category>
+<pattern>WHAT *</pattern>
+<template><srai>WHAT</srai></template>
+</category>
+
+<category>
+<pattern>WHAT *</pattern>
+<template>
+<random>
+<li>Why do you ask?</li>
+<li>Does that question interest you?</li>
+<li>What is it you really want to know?</li>
+<li>Are such questions much on your mind?</li>
+<li>What answer would please you most?</li>
+<li>What do you think ?</li>
+<li>What comes to mind when you ask that?</li>
+<li>Have you asked such questions before?</li>
+<li>Have you asked anyone else?</li>
+</random>
+<think><set name="intent">user_ask_what</set></think>
+</template>
+</category>
+
+<category>
+<pattern>* WHY DO NOT YOU *</pattern>
+<template><srai>WHY CAN NOT YOU <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>WHY DO NOT YOU *</pattern>
+<template>
+<think><set name="why_dont_bot"><star/></set>
+<set name="intent">why_dont_bot</set></think>
+<random>
+<li>Do you believe I don't <get name="why_dont_bot"/>?</li>
+<li>Perhaps I will <get name="why_dont_bot"/> in good time.</li>
+<li>Should you <get name="why_dont_bot"/> yourself?</li>
+<li>You want me to <get name="why_dont_bot"/>?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* WHY CAN NOT I *</pattern>
+<template><srai>WHY CAN NOT I</srai>
+<think><set name="why_cant_user"><star index="2"/></set></think>
+</template>
+</category>
+
+<category>
+<pattern>WHY CAN NOT I *</pattern>
+<template>
+<think><set name="why_cant_user"><star/></set>
+<set name="intent">why_cant_user</set></think>
+<random>
+<li>Do you think you should be able to <get name="why_cant_user"/>?</li>
+<li>Do you want to be able to <get name="why_cant_user"/>?</li>
+<li>Do you believe this will help you to <get name="why_cant_user"/>?</li>
+<li>Have you any idea why you can not <get name="why_cant_user"/>?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* DIFFERENT *</pattern>
+<template><srai>DIFFERENT</srai></template>
+</category>
+
+<category>
+<pattern>* DIFFERENT</pattern>
+<template><srai>DIFFERENT</srai></template>
+</category>
+
+<category>
+<pattern>DIFFERENT *</pattern>
+<template><srai>DIFFERENT</srai></template>
+</category>
+
+<category>
+<pattern>DIFFERENT</pattern>
+<template>
+<random>
+<li>How is it different?</li>
+<li>What differences do you see?</li>
+<li>What does that difference suggest to you?</li>
+<li>What other distinctions do you see?</li>
+<li>What do you suppose that disparity means?</li>
+<li>Could there be some connection, do you suppose?</li>
+<li>How?</li>
+</random>
+<think><set name="intent">user_say_different</set></think>
+</template>
+</category>
+
+<category>
+<pattern>* APOLOGISE</pattern>
+<template><srai>SORRY</srai></template>
+</category>
+
+<category>
+<pattern>* APOLOGISE *</pattern>
+<template><srai>SORRY</srai></template>
+</category>
+
+<category>
+<pattern>* SORRY</pattern>
+<template><srai>SORRY</srai></template>
+</category>
+
+<category>
+<pattern>* SORRY *</pattern>
+<template><srai>SORRY</srai></template>
+</category>
+
+<category>
+<pattern>SORRY</pattern>
+<template>
+<random>
+<li>user_name you don't need to apologise.</li>
+<li>Apologies are not necessary.</li>
+<li>I have told you that apologies are not required.</li>
+<li>It didn't bother me. Please continue.</li>
+</random>
+<think><set name="intent">user_feel_sorry</set></think>
+</template>
+</category>
+
+<category>
+<pattern>* MY *</pattern>
+<template><srai>MY <star index="1"/></srai></template>
+</category>
+
+<category>
+<pattern>MY *</pattern>
+<template>
+<think><set name="user_my"><star/></set>
+<set name="intent">user_say_my</set></think>
+<random>
+<li>Your <get name="user_my"/>?</li>
+<li>Why do you say your <get name="user_my"/>?</li>
+<li>Does that suggest anything else which belongs to you?</li>
+<li>Is it important to you that your <get name="user_my"/>?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* WAS I *</pattern>
+<template><srai>WAS I <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>WAS I *</pattern>
+<template>
+<think><set name="was_i"><star/></set>
+<set name="intent">user_say_was_i</set></think>
+<random>
+<li>What if you were <get name="was_i"/>?</li>
+<li>Do you think you were <get name="was_i"/>?</li>
+<li>Were you <get name="was_i"/>?</li>
+<li>What would it mean if you were <get name="was_i"/>?</li>
+<li>What does '<get name="was_i"/>' suggest to you?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* I WAS *</pattern>
+<template><srai>I WAS <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>I WAS *</pattern>
+<template>
+<think><set name="i_was"><star/></set>
+<set name="intent">user_say_i_was</set></think>
+<random>
+<li>Were you really?</li>
+<li>Why do you tell me you were <get name="i_was"/> now ?</li>
+<li>Perhaps I already know you were <get name="i_was"/>.</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* WAS YOU *</pattern>
+<template><srai>WAS YOU <star index="2"/></srai> </template>
+</category>
+
+<category>
+<pattern>WAS YOU *</pattern>
+<template>
+<think><set name="was_you"><star/></set>
+<set name="intent">user_say_was_i</set></think>
+<random>
+<li>Would you like to believe I was <get name="was_you"/>?</li>
+<li>What suggests that I was <get name="was_you"/>?</li>
+<li>What do you think?</li>
+<li>Perhaps I was <get name="was_you"/>.</li>
+<li>What if I had been <get name="was_you"/>?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* NO ONE *</pattern>
+<template><srai>NOONE <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>NO ONE *</pattern>
+<template>
+<think><set name="no_one"><star/></set>
+<set name="intent">no_one</set></think>
+<random>
+<li>Are you sure, no one <get name="no_one"/>?</li>
+<li>Surely someone <get name="no_one"/>.</li>
+<li>Can you think of anyone at all?</li>
+<li>Are you thinking of a very special person?</li>
+<li>Who, may I ask?</li>
+<li>You have a particular person in mind, don't you?</li>
+<li>Who do you think you are talking about ?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* NOBODY *</pattern>
+<template><srai>EVERYONE <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>* EVERYBODY *</pattern>
+<template><srai>EVERYONE <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>* EVERYONE *</pattern>
+<template><srai>EVERYONE <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>NOBODY *</pattern>
+<template><srai>EVERYONE</srai>
+<think><set name="user_say_everyone"><star/></set></think>
+</template>
+</category>
+
+<category>
+<pattern>EVERYBODY *</pattern>
+<template><srai>EVERYONE</srai>
+<think><set name="user_say_everyone"><star/></set></think>
+</template>
+</category>
+
+<category>
+<pattern>EVERYONE *</pattern>
+<template>
+<think><set name="user_say_everyone"><star/></set>
+<set name="intent">user_say_everyone</set></think>
+<random>
+<li>Really, <get name="everyone"/>?</li>
+<li>Surely not <get name="everyone"/>.</li>
+<li>Can you think of anyone in particular?</li>
+<li>Who, for example?</li>
+<li>Are you thinking of a very special person?</li>
+<li>Who, may I ask?</li>
+<li>Someone special perhaps?</li>
+<li>You have a particular person in mind, don't you?</li>
+<li>Who do you think you're talking about?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* IF BY CHANCE *</pattern>
+<template><srai>IF <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>* IF IN CASE *</pattern>
+<template><srai>IF <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>* IF *</pattern>
+<template><srai>IF <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>IF *</pattern>
+<template>
+<think><set name="if"><star/></set>
+<set name="intent">user_say_if</set></think>
+<random>
+<li>Do you think it's likely that <get name="if"/>?</li>
+<li>Do you wish that <get name="if"/>?</li>
+<li>What do you know about <get name="if"/>?</li>
+<li>Really, if <get name="if"/>?</li>
+<li>What would you do if <get name="if"/>?</li>
+<li>But what are the chances that <get name="if"/>?</li>
+<li>What does this speculation lead to?</li>
+</random>
+</template>
+</category>
+
+<!-- what for dreams -->
+
+<category>
+<pattern>* DREAM *</pattern>
+<template><srai>DREAM</srai>
+<think><set name="dream"><star index="2"/></set></think>
+</template>
+</category>
+
+<category>
+<pattern>DREAM *</pattern>
+<template><srai>DREAM</srai>
+<think><set name="dream"><star/></set></think>
+</template>
+</category>
+
+<category>
+<pattern>DREAM</pattern>
+<template>
+<random>
+<li>What does that dream suggest to you?</li>
+<li>Do you dream often?</li>
+<li>What persons appear in your dreams ?</li>
+<li>Do you believe that dreams have something to do with your problem ?</li>
+</random>
+<think><set name="intent">user_say_dream</set></think>
+</template>
+</category>
+
+<category>
+<pattern>* I DREAMED *</pattern>
+<template><srai>I DREAMED <star index="2"/></srai>
+</template>
+</category>
+
+<category>
+<pattern>I DREAMED *</pattern>
+<template>
+<think><set name="i_dreamed"><star/></set>
+<set name="intent">user_say_i_dreamed</set></think>
+<random>
+<li>Really, <get name="i_dreamed"/>?</li>
+<li>Have you ever fantasized <get name="i_dreamed"/> while you were awake?</li>
+<li>Have you ever dreamed <get name="i_dreamed"/> before?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* I REMEMBER *</pattern>
+<template><srai>I REMEMBER <star index="2"/></srai></template>
+</category>
+
+<!-- What if the user just says "Yeah I remember", "Hey do you remember", "You remember" 
+     How to check the condition if {i_remember, do_you_remember, you_remember} has some value or not? 
+     Capture it using <that> or something depending on context -->
+
+<category>
+<pattern>I REMEMBER *</pattern>
+<template>
+<think><set name="i_remember"><star/></set>
+<set name="intent">user_say_i_remember</set></think>
+<random>
+<li>Do you often think of <get name="i_remember"/>?</li>
+<li>Does thinking of <get name="i_remember"/> bring anything else to mind?</li>
+<li>What else do you recollect?</li>
+<li>Why do you remember <get name="i_remember"/> just now?</li>
+<li>What in the present situation reminds you of <get name="i_remember"/>?</li>
+<li>What is the connection between me and <get name="i_remember"/>?</li>
+<li>What else does <get name="i_remember"/> remind you of?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* DO YOU REMEMBER *</pattern>
+<template><srai>DO YOU REMEMBER <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>DO YOU REMEMBER *</pattern>
+<template>
+<think><set name="you_remember"><star/></set>
+<set name="intent">user_say_you_remember</set></think>
+<random>
+<li>Did you think I would forget <get name="you_remember"/>?</li>
+<li>How could I forget <get name="you_remember"/>?</li>
+<li>Why do you think I should recall <get name="you_remember"/> now ?</li>
+<li>What about <get name="you_remember"/>?</li>
+<li>You mentioned <get name="you_remember"/>?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* DID YOU FORGET *</pattern>
+<template><srai>DID YOU FORGET <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>DID YOU FORGET *</pattern>
+<template>
+<think><set name="you_forget"><star/></set>
+<set name="intent">user_say_you_forget</set></think>
+<random>
+<li>Why do you ask?</li>
+<li>Are you sure you told me?</li>
+<li>Would it bother you if I forgot <get name="you_forget"/>?</li>
+<li>Why should I recall <get name="you_forget"/> just now?</li>
+<li>Tell me more about <get name="you_forget"/>.</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* I FORGET *</pattern>
+<template><srai>I FORGET <star index="2"/></srai></template>
+</category>
+
+<category>
+<pattern>I FORGET *</pattern>
+<template>
+<think><set name="i_forget"><star/></set>
+<set name="intent">user_say_i_forget</set></think>
+<random>
+<li>Can you think of why you might forget <get name="i_forget"/>?</li>
+<li>Why can't you remember <get name="i_forget"/>?</li>
+<li>How often do you think of <get name="i_forget"/>?</li>
+<li>Does it bother you to forget that?</li>
+<li>Could it be a mental block?</li>
+<li>Are you generally forgetful?</li>
+<li>Do you think you are suppressing <get name="i_forget"/>?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>* LIKE *</pattern>
+<template><srai>ALIKE</srai></template>
+</category>
+
+<category>
+<pattern>* ALIKE *</pattern>
+<template><srai>ALIKE</srai>
+<think><set name="user_say_alike"><star index="2"/></set></think>
+</template>
+</category>
+
+<category>
+<pattern>ALIKE *</pattern>
+<template><srai>ALIKE</srai>
+<think><set name="user_say_alike"><star/></set></think>
+</template>
+</category>
+
+<category>
+<pattern>* ALIKE</pattern>
+<template><srai>ALIKE</srai>
+<think><set name="user_say_alike"><star/></set></think>
+</template>
+</category>
+
+<category>
+<pattern>ALIKE</pattern>
+<template>
+<random>
+<li>In what way?</li>
+<li>What resemblence do you see?</li>
+<li>What does that similarity suggest to you?</li>
+<li>What other connections do you see?</li>
+<li>What do you suppose that resemblence means?</li>
+<li>What is the connection, do you suppose?</li>
+<li>Could there really be some connection?</li>
+<li>How?</li>
+</random>
+<think><set name="intent">user_say_alike</set></think>
+</template>
+</category>
+
+<category>
+<pattern>* COMPUTER *</pattern>
+<template><srai>COMPUTER</srai>
+</template>
+</category>
+
+<category>
+<pattern>COMPUTER *</pattern>
+<template><srai>COMPUTER</srai>
+</template>
+</category>
+
+<category>
+<pattern>* COMPUTER</pattern>
+<template><srai>COMPUTER</srai>
+</template>
+</category>
+
+<category>
+<pattern>COMPUTER</pattern>
+<template>
+<random>
+<li>Do computers worry you?</li>
+<li>Why do you mention computers?</li>
+<li>What do you think machines have to do with your problem?</li>
+<li>Dont you think computers can help people?</li>
+<li>What about machines worries you?</li>
+<li>What do you think about machines?</li>
+<li>You don't think I am a computer program, do you?</li>
+</random>
+<think><set name="intent">computer</set></think>
+</template>
+</category>
+
+</aiml>
